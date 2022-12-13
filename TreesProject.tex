@@ -1,0 +1,430 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={TreesProject.R},
+  pdfauthor={sruthi},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\title{TreesProject.R}
+\author{sruthi}
+\date{2021-03-29}
+
+\begin{document}
+\maketitle
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}
+\DocumentationTok{\#\#\#\#\#\#\#\#\#\#\# CCR American Put and Call}
+\NormalTok{stock\_tree\_CRR\_American}\OtherTok{=} \ControlFlowTok{function}\NormalTok{(S, sigma, delta\_t, N) \{}
+\NormalTok{  tree }\OtherTok{=} \FunctionTok{matrix}\NormalTok{(}\DecValTok{0}\NormalTok{, }\AttributeTok{nrow=}\NormalTok{N}\SpecialCharTok{+}\DecValTok{1}\NormalTok{, }\AttributeTok{ncol=}\NormalTok{N}\SpecialCharTok{+}\DecValTok{1}\NormalTok{)}
+  
+\NormalTok{  u }\OtherTok{=} \FunctionTok{exp}\NormalTok{(sigma}\SpecialCharTok{*}\FunctionTok{sqrt}\NormalTok{(delta\_t))}
+\NormalTok{  d }\OtherTok{=} \FunctionTok{exp}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{sigma}\SpecialCharTok{*}\FunctionTok{sqrt}\NormalTok{(delta\_t))}
+  
+  \ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\NormalTok{(N}\SpecialCharTok{+}\DecValTok{1}\NormalTok{)) \{}
+    \ControlFlowTok{for}\NormalTok{ (j }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\NormalTok{i) \{}
+\NormalTok{      tree[i,j] }\OtherTok{=}\NormalTok{ S }\SpecialCharTok{*}\NormalTok{ u}\SpecialCharTok{\^{}}\NormalTok{(j}\DecValTok{{-}1}\NormalTok{) }\SpecialCharTok{*}\NormalTok{ d}\SpecialCharTok{\^{}}\NormalTok{((i}\DecValTok{{-}1}\NormalTok{)}\SpecialCharTok{{-}}\NormalTok{(j}\DecValTok{{-}1}\NormalTok{))}
+\NormalTok{    \}}
+\NormalTok{  \}}
+  \FunctionTok{return}\NormalTok{(tree)}
+  
+\NormalTok{\}}
+
+\NormalTok{q\_prob }\OtherTok{=} \ControlFlowTok{function}\NormalTok{(r, delta\_t, sigma) \{}
+\NormalTok{  u }\OtherTok{=} \FunctionTok{exp}\NormalTok{(sigma}\SpecialCharTok{*}\FunctionTok{sqrt}\NormalTok{(delta\_t))}
+\NormalTok{  d }\OtherTok{=} \FunctionTok{exp}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{sigma}\SpecialCharTok{*}\FunctionTok{sqrt}\NormalTok{(delta\_t))}
+  
+  \FunctionTok{return}\NormalTok{((}\FunctionTok{exp}\NormalTok{((r)}\SpecialCharTok{*}\NormalTok{(delta\_t)) }\SpecialCharTok{{-}}\NormalTok{ d)}\SpecialCharTok{/}\NormalTok{(u}\SpecialCharTok{{-}}\NormalTok{d))}
+\NormalTok{\}}
+
+
+\NormalTok{value\_binomial\_option\_CRR\_American }\OtherTok{=} \ControlFlowTok{function}\NormalTok{(tree, sigma, delta\_t, r, X, type)\{}
+  
+\NormalTok{  q }\OtherTok{=} \FunctionTok{q\_prob}\NormalTok{(r, delta\_t, sigma)}
+  
+\NormalTok{  option\_tree }\OtherTok{=} \FunctionTok{matrix}\NormalTok{(}\DecValTok{0}\NormalTok{, }\AttributeTok{nrow=}\FunctionTok{nrow}\NormalTok{(tree), }\AttributeTok{ncol=}\FunctionTok{ncol}\NormalTok{(tree))}
+  \ControlFlowTok{if}\NormalTok{(type }\SpecialCharTok{==} \StringTok{\textquotesingle{}put\textquotesingle{}}\NormalTok{) \{}
+\NormalTok{    option\_tree[}\FunctionTok{nrow}\NormalTok{(option\_tree),] }\OtherTok{=} \FunctionTok{pmax}\NormalTok{(X }\SpecialCharTok{{-}}\NormalTok{ tree[}\FunctionTok{nrow}\NormalTok{(tree),], }\DecValTok{0}\NormalTok{)}
+\NormalTok{  \} }\ControlFlowTok{else}\NormalTok{ \{}
+\NormalTok{    option\_tree[}\FunctionTok{nrow}\NormalTok{(option\_tree),] }\OtherTok{=} \FunctionTok{pmax}\NormalTok{(tree[}\FunctionTok{nrow}\NormalTok{(tree),] }\SpecialCharTok{{-}}\NormalTok{ X, }\DecValTok{0}\NormalTok{)}
+\NormalTok{  \}}
+  
+  \ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in}\NormalTok{ (}\FunctionTok{nrow}\NormalTok{(tree)}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{)}\SpecialCharTok{:}\DecValTok{1}\NormalTok{) \{}
+    \ControlFlowTok{for}\NormalTok{(j }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\NormalTok{i) \{}
+\NormalTok{      option\_tree[i, j] }\OtherTok{=}\NormalTok{ ((}\DecValTok{1}\SpecialCharTok{{-}}\NormalTok{q)}\SpecialCharTok{*}\NormalTok{option\_tree[i}\SpecialCharTok{+}\DecValTok{1}\NormalTok{,j] }\SpecialCharTok{+}\NormalTok{ q}\SpecialCharTok{*}\NormalTok{option\_tree[i}\SpecialCharTok{+}\DecValTok{1}\NormalTok{,j}\SpecialCharTok{+}\DecValTok{1}\NormalTok{])}\SpecialCharTok{/}\FunctionTok{exp}\NormalTok{(r}\SpecialCharTok{*}\NormalTok{delta\_t)}
+      
+      \ControlFlowTok{if}\NormalTok{(type }\SpecialCharTok{==} \StringTok{\textquotesingle{}put\textquotesingle{}} \SpecialCharTok{\&\&}\NormalTok{ option\_tree[i,j]}\SpecialCharTok{\textless{}}\NormalTok{(X}\SpecialCharTok{{-}}\NormalTok{tree[i,j]))\{}
+\NormalTok{        option\_tree[i,j]}\OtherTok{=}\NormalTok{(X}\SpecialCharTok{{-}}\NormalTok{tree[i,j])}
+\NormalTok{      \} }
+      \ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{(type }\SpecialCharTok{==} \StringTok{\textquotesingle{}put\textquotesingle{}} \SpecialCharTok{\&\&}\NormalTok{ option\_tree[i,j]}\SpecialCharTok{\textgreater{}}\NormalTok{(X}\SpecialCharTok{{-}}\NormalTok{tree[i,j]))\{}
+\NormalTok{        option\_tree[i, j] }\OtherTok{=}\NormalTok{((}\DecValTok{1}\SpecialCharTok{{-}}\NormalTok{q)}\SpecialCharTok{*}\NormalTok{option\_tree[i}\SpecialCharTok{+}\DecValTok{1}\NormalTok{,j] }\SpecialCharTok{+}\NormalTok{ q}\SpecialCharTok{*}\NormalTok{option\_tree[i}\SpecialCharTok{+}\DecValTok{1}\NormalTok{,j}\SpecialCharTok{+}\DecValTok{1}\NormalTok{])}\SpecialCharTok{/}\FunctionTok{exp}\NormalTok{(r}\SpecialCharTok{*}\NormalTok{delta\_t)}
+\NormalTok{      \} }
+      \ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{(type }\SpecialCharTok{==} \StringTok{\textquotesingle{}call\textquotesingle{}} \SpecialCharTok{\&\&}\NormalTok{ option\_tree[i,j]}\SpecialCharTok{\textgreater{}}\NormalTok{(tree[i,j]}\SpecialCharTok{{-}}\NormalTok{X))\{}
+\NormalTok{        option\_tree[i, j] }\OtherTok{=}\NormalTok{((}\DecValTok{1}\SpecialCharTok{{-}}\NormalTok{q)}\SpecialCharTok{*}\NormalTok{option\_tree[i}\SpecialCharTok{+}\DecValTok{1}\NormalTok{,j] }\SpecialCharTok{+}\NormalTok{ q}\SpecialCharTok{*}\NormalTok{option\_tree[i}\SpecialCharTok{+}\DecValTok{1}\NormalTok{,j}\SpecialCharTok{+}\DecValTok{1}\NormalTok{])}\SpecialCharTok{/}\FunctionTok{exp}\NormalTok{(r}\SpecialCharTok{*}\NormalTok{delta\_t)}
+        
+\NormalTok{      \} }
+      \ControlFlowTok{else}\NormalTok{ \{}
+\NormalTok{        option\_tree[i,j]}\OtherTok{=}\NormalTok{(tree[i,j]}\SpecialCharTok{{-}}\NormalTok{X)}
+\NormalTok{      \}}
+\NormalTok{    \}}
+\NormalTok{  \}}
+  \FunctionTok{return}\NormalTok{(option\_tree)}
+\NormalTok{\}}
+
+\NormalTok{binomial\_option\_CRR\_American }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(type, sigma, T, r, X, S, N) \{}
+\NormalTok{  q }\OtherTok{\textless{}{-}} \FunctionTok{q\_prob}\NormalTok{(}\AttributeTok{r=}\NormalTok{r, }\AttributeTok{delta\_t=}\NormalTok{T}\SpecialCharTok{/}\NormalTok{N, }\AttributeTok{sigma=}\NormalTok{sigma)}
+\NormalTok{  tree }\OtherTok{\textless{}{-}} \FunctionTok{stock\_tree\_CRR\_American}\NormalTok{(}\AttributeTok{S=}\NormalTok{S, }\AttributeTok{sigma=}\NormalTok{sigma, }\AttributeTok{delta\_t=}\NormalTok{T}\SpecialCharTok{/}\NormalTok{N, }\AttributeTok{N=}\NormalTok{N)}
+\NormalTok{  option }\OtherTok{\textless{}{-}} \FunctionTok{value\_binomial\_option\_CRR\_American}\NormalTok{(tree, }\AttributeTok{sigma=}\NormalTok{sigma, }\AttributeTok{delta\_t=}\NormalTok{T}\SpecialCharTok{/}\NormalTok{N, }\AttributeTok{r=}\NormalTok{r, }\AttributeTok{X=}\NormalTok{X, }\AttributeTok{type=}\NormalTok{type)}
+  \FunctionTok{return}\NormalTok{(}\FunctionTok{list}\NormalTok{(}\AttributeTok{q=}\NormalTok{q, }\AttributeTok{stock=}\NormalTok{tree, }\AttributeTok{option=}\NormalTok{option, }\AttributeTok{price=}\NormalTok{option[}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{]))}
+\NormalTok{\}}
+
+\CommentTok{\#binomial\_option\_CRR\_American(type=\textquotesingle{}call\textquotesingle{},sigma = .15,T=1,r=.1,X=100,S=110,N=5)}
+
+\DocumentationTok{\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}
+\DocumentationTok{\#\#\#\#\#\#\#\#\#\#\#CCR European Put and Call}
+\NormalTok{stock\_tree\_CRR\_European}\OtherTok{=} \ControlFlowTok{function}\NormalTok{(S, sigma, delta\_t, N) \{}
+\NormalTok{  tree }\OtherTok{=} \FunctionTok{matrix}\NormalTok{(}\DecValTok{0}\NormalTok{, }\AttributeTok{nrow=}\NormalTok{N}\SpecialCharTok{+}\DecValTok{1}\NormalTok{, }\AttributeTok{ncol=}\NormalTok{N}\SpecialCharTok{+}\DecValTok{1}\NormalTok{)}
+  
+\NormalTok{  u }\OtherTok{=} \FunctionTok{exp}\NormalTok{(sigma}\SpecialCharTok{*}\FunctionTok{sqrt}\NormalTok{(delta\_t))}
+\NormalTok{  d }\OtherTok{=} \FunctionTok{exp}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{sigma}\SpecialCharTok{*}\FunctionTok{sqrt}\NormalTok{(delta\_t))}
+  
+  \ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\NormalTok{(N}\SpecialCharTok{+}\DecValTok{1}\NormalTok{)) \{}
+    \ControlFlowTok{for}\NormalTok{ (j }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\NormalTok{i) \{}
+\NormalTok{      tree[i,j] }\OtherTok{=}\NormalTok{ S }\SpecialCharTok{*}\NormalTok{ u}\SpecialCharTok{\^{}}\NormalTok{(j}\DecValTok{{-}1}\NormalTok{) }\SpecialCharTok{*}\NormalTok{ d}\SpecialCharTok{\^{}}\NormalTok{((i}\DecValTok{{-}1}\NormalTok{)}\SpecialCharTok{{-}}\NormalTok{(j}\DecValTok{{-}1}\NormalTok{))}
+\NormalTok{    \}}
+\NormalTok{  \}}
+  \FunctionTok{return}\NormalTok{(tree)}
+  
+\NormalTok{\}}
+
+\NormalTok{q\_prob }\OtherTok{=} \ControlFlowTok{function}\NormalTok{(r, delta\_t, sigma) \{}
+\NormalTok{  u }\OtherTok{=} \FunctionTok{exp}\NormalTok{(sigma}\SpecialCharTok{*}\FunctionTok{sqrt}\NormalTok{(delta\_t))}
+\NormalTok{  d }\OtherTok{=} \FunctionTok{exp}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{sigma}\SpecialCharTok{*}\FunctionTok{sqrt}\NormalTok{(delta\_t))}
+  
+  \FunctionTok{return}\NormalTok{((}\FunctionTok{exp}\NormalTok{(r}\SpecialCharTok{*}\NormalTok{delta\_t) }\SpecialCharTok{{-}}\NormalTok{ d)}\SpecialCharTok{/}\NormalTok{(u}\SpecialCharTok{{-}}\NormalTok{d))}
+\NormalTok{\}}
+
+
+\NormalTok{value\_binomial\_option\_CRR\_European }\OtherTok{=} \ControlFlowTok{function}\NormalTok{(tree, sigma, delta\_t, r, X, type)\{}
+  
+\NormalTok{  q }\OtherTok{=} \FunctionTok{q\_prob}\NormalTok{(r, delta\_t, sigma)}
+  
+\NormalTok{  option\_tree }\OtherTok{=} \FunctionTok{matrix}\NormalTok{(}\DecValTok{0}\NormalTok{, }\AttributeTok{nrow=}\FunctionTok{nrow}\NormalTok{(tree), }\AttributeTok{ncol=}\FunctionTok{ncol}\NormalTok{(tree))}
+  \ControlFlowTok{if}\NormalTok{(type }\SpecialCharTok{==} \StringTok{\textquotesingle{}put\textquotesingle{}}\NormalTok{) \{}
+\NormalTok{    option\_tree[}\FunctionTok{nrow}\NormalTok{(option\_tree),] }\OtherTok{=} \FunctionTok{pmax}\NormalTok{(X }\SpecialCharTok{{-}}\NormalTok{ tree[}\FunctionTok{nrow}\NormalTok{(tree),], }\DecValTok{0}\NormalTok{)}
+\NormalTok{  \} }\ControlFlowTok{else}\NormalTok{ \{}
+\NormalTok{    option\_tree[}\FunctionTok{nrow}\NormalTok{(option\_tree),] }\OtherTok{=} \FunctionTok{pmax}\NormalTok{(tree[}\FunctionTok{nrow}\NormalTok{(tree),] }\SpecialCharTok{{-}}\NormalTok{ X, }\DecValTok{0}\NormalTok{)}
+\NormalTok{  \}}
+  
+  \ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in}\NormalTok{ (}\FunctionTok{nrow}\NormalTok{(tree)}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{)}\SpecialCharTok{:}\DecValTok{1}\NormalTok{) \{}
+    \ControlFlowTok{for}\NormalTok{(j }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\NormalTok{i) \{}
+\NormalTok{      option\_tree[i, j] }\OtherTok{=}\NormalTok{ ((}\DecValTok{1}\SpecialCharTok{{-}}\NormalTok{q)}\SpecialCharTok{*}\NormalTok{option\_tree[i}\SpecialCharTok{+}\DecValTok{1}\NormalTok{,j] }\SpecialCharTok{+}\NormalTok{ q}\SpecialCharTok{*}\NormalTok{option\_tree[i}\SpecialCharTok{+}\DecValTok{1}\NormalTok{,j}\SpecialCharTok{+}\DecValTok{1}\NormalTok{])}\SpecialCharTok{/}\FunctionTok{exp}\NormalTok{(r}\SpecialCharTok{*}\NormalTok{delta\_t)}
+\NormalTok{    \}}
+\NormalTok{  \}}
+  \FunctionTok{return}\NormalTok{(option\_tree)}
+\NormalTok{\}}
+
+\NormalTok{binomial\_option\_CRREuro }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(type, sigma, T, r, X, S, N) \{}
+\NormalTok{  q }\OtherTok{\textless{}{-}} \FunctionTok{q\_prob}\NormalTok{(}\AttributeTok{r=}\NormalTok{r, }\AttributeTok{delta\_t=}\NormalTok{T}\SpecialCharTok{/}\NormalTok{N, }\AttributeTok{sigma=}\NormalTok{sigma)}
+\NormalTok{  tree }\OtherTok{\textless{}{-}} \FunctionTok{stock\_tree\_CRR\_European}\NormalTok{(}\AttributeTok{S=}\NormalTok{S, }\AttributeTok{sigma=}\NormalTok{sigma, }\AttributeTok{delta\_t=}\NormalTok{T}\SpecialCharTok{/}\NormalTok{N, }\AttributeTok{N=}\NormalTok{N)}
+\NormalTok{  option }\OtherTok{\textless{}{-}} \FunctionTok{value\_binomial\_option\_CRR\_European}\NormalTok{(tree, }\AttributeTok{sigma=}\NormalTok{sigma, }\AttributeTok{delta\_t=}\NormalTok{T}\SpecialCharTok{/}\NormalTok{N, }\AttributeTok{r=}\NormalTok{r, }\AttributeTok{X=}\NormalTok{X, }\AttributeTok{type=}\NormalTok{type)}
+  \FunctionTok{return}\NormalTok{(}\FunctionTok{list}\NormalTok{(}\AttributeTok{q=}\NormalTok{q, }\AttributeTok{stock=}\NormalTok{tree, }\AttributeTok{option=}\NormalTok{option, }\AttributeTok{price=}\NormalTok{option[}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{]))}
+  
+\NormalTok{\}}
+
+\CommentTok{\#binomial\_option\_CRREuro(type=\textquotesingle{}call\textquotesingle{},sigma = .15,T=1,r=.1,X=100,S=110,N=5)}
+
+\DocumentationTok{\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}
+\DocumentationTok{\#\#\#\#\#\#\#\#\#\#\# Hull/White American Put and Call}
+\NormalTok{stock\_tree\_HW\_American}\OtherTok{=} \ControlFlowTok{function}\NormalTok{(S, sigma, delta\_t, r,N) \{}
+\NormalTok{  tree }\OtherTok{=} \FunctionTok{matrix}\NormalTok{(}\DecValTok{0}\NormalTok{, }\AttributeTok{nrow=}\NormalTok{N}\SpecialCharTok{+}\DecValTok{1}\NormalTok{, }\AttributeTok{ncol=}\NormalTok{N}\SpecialCharTok{+}\DecValTok{1}\NormalTok{)}
+  
+\NormalTok{  u }\OtherTok{=} \FunctionTok{exp}\NormalTok{((r}\SpecialCharTok{*}\NormalTok{(delta\_t))}\SpecialCharTok{+}\NormalTok{(sigma}\SpecialCharTok{*}\NormalTok{((delta\_t)}\SpecialCharTok{\^{}}\NormalTok{(.}\DecValTok{5}\NormalTok{))))}
+\NormalTok{  d }\OtherTok{=} \FunctionTok{exp}\NormalTok{((r}\SpecialCharTok{*}\NormalTok{(delta\_t))}\SpecialCharTok{{-}}\NormalTok{(sigma}\SpecialCharTok{*}\NormalTok{((delta\_t)}\SpecialCharTok{\^{}}\NormalTok{(.}\DecValTok{5}\NormalTok{))))}
+  
+  \ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\NormalTok{(N}\SpecialCharTok{+}\DecValTok{1}\NormalTok{)) \{}
+    \ControlFlowTok{for}\NormalTok{ (j }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\NormalTok{i) \{}
+\NormalTok{      tree[i,j] }\OtherTok{=}\NormalTok{ S }\SpecialCharTok{*}\NormalTok{ u}\SpecialCharTok{\^{}}\NormalTok{(j}\DecValTok{{-}1}\NormalTok{) }\SpecialCharTok{*}\NormalTok{ d}\SpecialCharTok{\^{}}\NormalTok{((i}\DecValTok{{-}1}\NormalTok{)}\SpecialCharTok{{-}}\NormalTok{(j}\DecValTok{{-}1}\NormalTok{))}
+\NormalTok{    \}}
+\NormalTok{  \}}
+  \FunctionTok{return}\NormalTok{(tree)}
+  
+\NormalTok{\}}
+
+\NormalTok{q\_prob }\OtherTok{=} \ControlFlowTok{function}\NormalTok{(r, delta\_t, sigma) \{}
+\NormalTok{  u }\OtherTok{=} \FunctionTok{exp}\NormalTok{((r}\SpecialCharTok{*}\NormalTok{(delta\_t))}\SpecialCharTok{+}\NormalTok{(sigma}\SpecialCharTok{*}\NormalTok{((delta\_t)}\SpecialCharTok{\^{}}\NormalTok{(.}\DecValTok{5}\NormalTok{))))}
+\NormalTok{  d }\OtherTok{=} \FunctionTok{exp}\NormalTok{((r}\SpecialCharTok{*}\NormalTok{(delta\_t))}\SpecialCharTok{{-}}\NormalTok{(sigma}\SpecialCharTok{*}\NormalTok{((delta\_t)}\SpecialCharTok{\^{}}\NormalTok{(.}\DecValTok{5}\NormalTok{))))}
+  
+  \FunctionTok{return}\NormalTok{((}\FunctionTok{exp}\NormalTok{((r)}\SpecialCharTok{*}\NormalTok{(delta\_t)) }\SpecialCharTok{{-}}\NormalTok{ d)}\SpecialCharTok{/}\NormalTok{(u}\SpecialCharTok{{-}}\NormalTok{d))}
+\NormalTok{\}}
+
+
+\NormalTok{value\_binomial\_option\_HW\_American }\OtherTok{=} \ControlFlowTok{function}\NormalTok{(tree, sigma, delta\_t, r, X, type)\{}
+  
+\NormalTok{  q }\OtherTok{=} \FunctionTok{q\_prob}\NormalTok{(r, delta\_t, sigma)}
+  
+\NormalTok{  option\_tree }\OtherTok{=} \FunctionTok{matrix}\NormalTok{(}\DecValTok{0}\NormalTok{, }\AttributeTok{nrow=}\FunctionTok{nrow}\NormalTok{(tree), }\AttributeTok{ncol=}\FunctionTok{ncol}\NormalTok{(tree))}
+  \ControlFlowTok{if}\NormalTok{(type }\SpecialCharTok{==} \StringTok{\textquotesingle{}put\textquotesingle{}}\NormalTok{) \{}
+\NormalTok{    option\_tree[}\FunctionTok{nrow}\NormalTok{(option\_tree),] }\OtherTok{=} \FunctionTok{pmax}\NormalTok{(X }\SpecialCharTok{{-}}\NormalTok{ tree[}\FunctionTok{nrow}\NormalTok{(tree),], }\DecValTok{0}\NormalTok{)}
+\NormalTok{  \} }\ControlFlowTok{else}\NormalTok{ \{}
+\NormalTok{    option\_tree[}\FunctionTok{nrow}\NormalTok{(option\_tree),] }\OtherTok{=} \FunctionTok{pmax}\NormalTok{(tree[}\FunctionTok{nrow}\NormalTok{(tree),] }\SpecialCharTok{{-}}\NormalTok{ X, }\DecValTok{0}\NormalTok{)}
+\NormalTok{  \}}
+  
+  \ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in}\NormalTok{ (}\FunctionTok{nrow}\NormalTok{(tree)}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{)}\SpecialCharTok{:}\DecValTok{1}\NormalTok{) \{}
+    \ControlFlowTok{for}\NormalTok{(j }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\NormalTok{i) \{}
+\NormalTok{      option\_tree[i, j] }\OtherTok{=}\NormalTok{ ((}\DecValTok{1}\SpecialCharTok{{-}}\NormalTok{q)}\SpecialCharTok{*}\NormalTok{option\_tree[i}\SpecialCharTok{+}\DecValTok{1}\NormalTok{,j] }\SpecialCharTok{+}\NormalTok{ q}\SpecialCharTok{*}\NormalTok{option\_tree[i}\SpecialCharTok{+}\DecValTok{1}\NormalTok{,j}\SpecialCharTok{+}\DecValTok{1}\NormalTok{])}\SpecialCharTok{/}\FunctionTok{exp}\NormalTok{(r}\SpecialCharTok{*}\NormalTok{delta\_t)}
+      
+      \ControlFlowTok{if}\NormalTok{(type }\SpecialCharTok{==} \StringTok{\textquotesingle{}put\textquotesingle{}} \SpecialCharTok{\&\&}\NormalTok{ option\_tree[i,j]}\SpecialCharTok{\textless{}}\NormalTok{(X}\SpecialCharTok{{-}}\NormalTok{tree[i,j]))\{}
+\NormalTok{        option\_tree[i,j]}\OtherTok{=}\NormalTok{(X}\SpecialCharTok{{-}}\NormalTok{tree[i,j])}
+\NormalTok{      \} }
+      \ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{(type }\SpecialCharTok{==} \StringTok{\textquotesingle{}put\textquotesingle{}} \SpecialCharTok{\&\&}\NormalTok{ option\_tree[i,j]}\SpecialCharTok{\textgreater{}}\NormalTok{(X}\SpecialCharTok{{-}}\NormalTok{tree[i,j]))\{}
+\NormalTok{        option\_tree[i, j] }\OtherTok{=}\NormalTok{((}\DecValTok{1}\SpecialCharTok{{-}}\NormalTok{q)}\SpecialCharTok{*}\NormalTok{option\_tree[i}\SpecialCharTok{+}\DecValTok{1}\NormalTok{,j] }\SpecialCharTok{+}\NormalTok{ q}\SpecialCharTok{*}\NormalTok{option\_tree[i}\SpecialCharTok{+}\DecValTok{1}\NormalTok{,j}\SpecialCharTok{+}\DecValTok{1}\NormalTok{])}\SpecialCharTok{/}\FunctionTok{exp}\NormalTok{(r}\SpecialCharTok{*}\NormalTok{delta\_t)}
+\NormalTok{      \} }
+      \ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{(type }\SpecialCharTok{==} \StringTok{\textquotesingle{}call\textquotesingle{}} \SpecialCharTok{\&\&}\NormalTok{ option\_tree[i,j]}\SpecialCharTok{\textgreater{}}\NormalTok{(tree[i,j]}\SpecialCharTok{{-}}\NormalTok{X))\{}
+\NormalTok{        option\_tree[i, j] }\OtherTok{=}\NormalTok{((}\DecValTok{1}\SpecialCharTok{{-}}\NormalTok{q)}\SpecialCharTok{*}\NormalTok{option\_tree[i}\SpecialCharTok{+}\DecValTok{1}\NormalTok{,j] }\SpecialCharTok{+}\NormalTok{ q}\SpecialCharTok{*}\NormalTok{option\_tree[i}\SpecialCharTok{+}\DecValTok{1}\NormalTok{,j}\SpecialCharTok{+}\DecValTok{1}\NormalTok{])}\SpecialCharTok{/}\FunctionTok{exp}\NormalTok{(r}\SpecialCharTok{*}\NormalTok{delta\_t)}
+        
+\NormalTok{      \} }
+      \ControlFlowTok{else}\NormalTok{ \{}
+\NormalTok{        option\_tree[i,j]}\OtherTok{=}\NormalTok{(tree[i,j]}\SpecialCharTok{{-}}\NormalTok{X)}
+\NormalTok{      \}}
+\NormalTok{    \}}
+\NormalTok{  \}}
+  \FunctionTok{return}\NormalTok{(option\_tree)}
+\NormalTok{\}}
+
+\NormalTok{binomial\_option\_HullWhite\_American }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(type, sigma, T, r, X, S, N) \{}
+\NormalTok{  q }\OtherTok{\textless{}{-}} \FunctionTok{q\_prob}\NormalTok{(}\AttributeTok{r=}\NormalTok{r, }\AttributeTok{delta\_t=}\NormalTok{T}\SpecialCharTok{/}\NormalTok{N, }\AttributeTok{sigma=}\NormalTok{sigma)}
+\NormalTok{  tree }\OtherTok{\textless{}{-}} \FunctionTok{stock\_tree\_HW\_American}\NormalTok{(}\AttributeTok{S=}\NormalTok{S, }\AttributeTok{sigma=}\NormalTok{sigma, }\AttributeTok{delta\_t=}\NormalTok{T}\SpecialCharTok{/}\NormalTok{N, }\AttributeTok{r=}\NormalTok{r,}\AttributeTok{N=}\NormalTok{N)}
+\NormalTok{  option }\OtherTok{\textless{}{-}} \FunctionTok{value\_binomial\_option\_HW\_American}\NormalTok{(tree, }\AttributeTok{sigma=}\NormalTok{sigma, }\AttributeTok{delta\_t=}\NormalTok{T}\SpecialCharTok{/}\NormalTok{N, }\AttributeTok{r=}\NormalTok{r, }\AttributeTok{X=}\NormalTok{X, }\AttributeTok{type=}\NormalTok{type)}
+  \FunctionTok{return}\NormalTok{(}\FunctionTok{list}\NormalTok{(}\AttributeTok{q=}\NormalTok{q, }\AttributeTok{stock=}\NormalTok{tree, }\AttributeTok{option=}\NormalTok{option, }\AttributeTok{price=}\NormalTok{option[}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{]))}
+\NormalTok{\}}
+
+\CommentTok{\#answer should be 19.11054}
+\DocumentationTok{\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}
+\DocumentationTok{\#\#\#\#\#\#\#\#\#\#\# Hull/White American Put and Call}
+\NormalTok{stock\_tree\_HW\_American}\OtherTok{=} \ControlFlowTok{function}\NormalTok{(S, sigma, delta\_t, r,N) \{}
+\NormalTok{  tree }\OtherTok{=} \FunctionTok{matrix}\NormalTok{(}\DecValTok{0}\NormalTok{, }\AttributeTok{nrow=}\NormalTok{N}\SpecialCharTok{+}\DecValTok{1}\NormalTok{, }\AttributeTok{ncol=}\NormalTok{N}\SpecialCharTok{+}\DecValTok{1}\NormalTok{)}
+  
+\NormalTok{  u }\OtherTok{=} \FunctionTok{exp}\NormalTok{((r}\SpecialCharTok{*}\NormalTok{(delta\_t))}\SpecialCharTok{+}\NormalTok{(sigma}\SpecialCharTok{*}\NormalTok{((delta\_t)}\SpecialCharTok{\^{}}\NormalTok{(.}\DecValTok{5}\NormalTok{))))}
+\NormalTok{  d }\OtherTok{=} \FunctionTok{exp}\NormalTok{((r}\SpecialCharTok{*}\NormalTok{(delta\_t))}\SpecialCharTok{{-}}\NormalTok{(sigma}\SpecialCharTok{*}\NormalTok{((delta\_t)}\SpecialCharTok{\^{}}\NormalTok{(.}\DecValTok{5}\NormalTok{))))}
+  
+  \ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\NormalTok{(N}\SpecialCharTok{+}\DecValTok{1}\NormalTok{)) \{}
+    \ControlFlowTok{for}\NormalTok{ (j }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\NormalTok{i) \{}
+\NormalTok{      tree[i,j] }\OtherTok{=}\NormalTok{ S }\SpecialCharTok{*}\NormalTok{ u}\SpecialCharTok{\^{}}\NormalTok{(j}\DecValTok{{-}1}\NormalTok{) }\SpecialCharTok{*}\NormalTok{ d}\SpecialCharTok{\^{}}\NormalTok{((i}\DecValTok{{-}1}\NormalTok{)}\SpecialCharTok{{-}}\NormalTok{(j}\DecValTok{{-}1}\NormalTok{))}
+\NormalTok{    \}}
+\NormalTok{  \}}
+  \FunctionTok{return}\NormalTok{(tree)}
+  
+\NormalTok{\}}
+
+\NormalTok{q\_prob }\OtherTok{=} \ControlFlowTok{function}\NormalTok{(r, delta\_t, sigma) \{}
+\NormalTok{  u }\OtherTok{=} \FunctionTok{exp}\NormalTok{((r}\SpecialCharTok{*}\NormalTok{(delta\_t))}\SpecialCharTok{+}\NormalTok{(sigma}\SpecialCharTok{*}\NormalTok{((delta\_t)}\SpecialCharTok{\^{}}\NormalTok{(.}\DecValTok{5}\NormalTok{))))}
+\NormalTok{  d }\OtherTok{=} \FunctionTok{exp}\NormalTok{((r}\SpecialCharTok{*}\NormalTok{(delta\_t))}\SpecialCharTok{{-}}\NormalTok{(sigma}\SpecialCharTok{*}\NormalTok{((delta\_t)}\SpecialCharTok{\^{}}\NormalTok{(.}\DecValTok{5}\NormalTok{))))}
+  
+  \FunctionTok{return}\NormalTok{((}\FunctionTok{exp}\NormalTok{((r)}\SpecialCharTok{*}\NormalTok{(delta\_t)) }\SpecialCharTok{{-}}\NormalTok{ d)}\SpecialCharTok{/}\NormalTok{(u}\SpecialCharTok{{-}}\NormalTok{d))}
+\NormalTok{\}}
+
+
+\NormalTok{value\_binomial\_option\_HW\_American }\OtherTok{=} \ControlFlowTok{function}\NormalTok{(tree, sigma, delta\_t, r, X, type)\{}
+  
+\NormalTok{  q }\OtherTok{=} \FunctionTok{q\_prob}\NormalTok{(r, delta\_t, sigma)}
+  
+\NormalTok{  option\_tree }\OtherTok{=} \FunctionTok{matrix}\NormalTok{(}\DecValTok{0}\NormalTok{, }\AttributeTok{nrow=}\FunctionTok{nrow}\NormalTok{(tree), }\AttributeTok{ncol=}\FunctionTok{ncol}\NormalTok{(tree))}
+  \ControlFlowTok{if}\NormalTok{(type }\SpecialCharTok{==} \StringTok{\textquotesingle{}put\textquotesingle{}}\NormalTok{) \{}
+\NormalTok{    option\_tree[}\FunctionTok{nrow}\NormalTok{(option\_tree),] }\OtherTok{=} \FunctionTok{pmax}\NormalTok{(X }\SpecialCharTok{{-}}\NormalTok{ tree[}\FunctionTok{nrow}\NormalTok{(tree),], }\DecValTok{0}\NormalTok{)}
+\NormalTok{  \} }\ControlFlowTok{else}\NormalTok{ \{}
+\NormalTok{    option\_tree[}\FunctionTok{nrow}\NormalTok{(option\_tree),] }\OtherTok{=} \FunctionTok{pmax}\NormalTok{(tree[}\FunctionTok{nrow}\NormalTok{(tree),] }\SpecialCharTok{{-}}\NormalTok{ X, }\DecValTok{0}\NormalTok{)}
+\NormalTok{  \}}
+  
+  \ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in}\NormalTok{ (}\FunctionTok{nrow}\NormalTok{(tree)}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{)}\SpecialCharTok{:}\DecValTok{1}\NormalTok{) \{}
+    \ControlFlowTok{for}\NormalTok{(j }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\NormalTok{i) \{}
+\NormalTok{      option\_tree[i, j] }\OtherTok{=}\NormalTok{ ((}\DecValTok{1}\SpecialCharTok{{-}}\NormalTok{q)}\SpecialCharTok{*}\NormalTok{option\_tree[i}\SpecialCharTok{+}\DecValTok{1}\NormalTok{,j] }\SpecialCharTok{+}\NormalTok{ q}\SpecialCharTok{*}\NormalTok{option\_tree[i}\SpecialCharTok{+}\DecValTok{1}\NormalTok{,j}\SpecialCharTok{+}\DecValTok{1}\NormalTok{])}\SpecialCharTok{/}\FunctionTok{exp}\NormalTok{(r}\SpecialCharTok{*}\NormalTok{delta\_t)}
+      
+      \ControlFlowTok{if}\NormalTok{(type }\SpecialCharTok{==} \StringTok{\textquotesingle{}put\textquotesingle{}} \SpecialCharTok{\&\&}\NormalTok{ option\_tree[i,j]}\SpecialCharTok{\textless{}}\NormalTok{(X}\SpecialCharTok{{-}}\NormalTok{tree[i,j]))\{}
+\NormalTok{        option\_tree[i,j]}\OtherTok{=}\NormalTok{(X}\SpecialCharTok{{-}}\NormalTok{tree[i,j])}
+\NormalTok{      \} }
+      \ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{(type }\SpecialCharTok{==} \StringTok{\textquotesingle{}put\textquotesingle{}} \SpecialCharTok{\&\&}\NormalTok{ option\_tree[i,j]}\SpecialCharTok{\textgreater{}}\NormalTok{(X}\SpecialCharTok{{-}}\NormalTok{tree[i,j]))\{}
+\NormalTok{        option\_tree[i, j] }\OtherTok{=}\NormalTok{((}\DecValTok{1}\SpecialCharTok{{-}}\NormalTok{q)}\SpecialCharTok{*}\NormalTok{option\_tree[i}\SpecialCharTok{+}\DecValTok{1}\NormalTok{,j] }\SpecialCharTok{+}\NormalTok{ q}\SpecialCharTok{*}\NormalTok{option\_tree[i}\SpecialCharTok{+}\DecValTok{1}\NormalTok{,j}\SpecialCharTok{+}\DecValTok{1}\NormalTok{])}\SpecialCharTok{/}\FunctionTok{exp}\NormalTok{(r}\SpecialCharTok{*}\NormalTok{delta\_t)}
+\NormalTok{      \} }
+      \ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{(type }\SpecialCharTok{==} \StringTok{\textquotesingle{}call\textquotesingle{}} \SpecialCharTok{\&\&}\NormalTok{ option\_tree[i,j]}\SpecialCharTok{\textgreater{}}\NormalTok{(tree[i,j]}\SpecialCharTok{{-}}\NormalTok{X))\{}
+\NormalTok{        option\_tree[i, j] }\OtherTok{=}\NormalTok{((}\DecValTok{1}\SpecialCharTok{{-}}\NormalTok{q)}\SpecialCharTok{*}\NormalTok{option\_tree[i}\SpecialCharTok{+}\DecValTok{1}\NormalTok{,j] }\SpecialCharTok{+}\NormalTok{ q}\SpecialCharTok{*}\NormalTok{option\_tree[i}\SpecialCharTok{+}\DecValTok{1}\NormalTok{,j}\SpecialCharTok{+}\DecValTok{1}\NormalTok{])}\SpecialCharTok{/}\FunctionTok{exp}\NormalTok{(r}\SpecialCharTok{*}\NormalTok{delta\_t)}
+        
+\NormalTok{      \} }
+      \ControlFlowTok{else}\NormalTok{ \{}
+\NormalTok{        option\_tree[i,j]}\OtherTok{=}\NormalTok{(tree[i,j]}\SpecialCharTok{{-}}\NormalTok{X)}
+\NormalTok{      \}}
+\NormalTok{    \}}
+\NormalTok{  \}}
+  \FunctionTok{return}\NormalTok{(option\_tree)}
+\NormalTok{\}}
+
+\NormalTok{binomial\_option\_HullWhite\_American }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(type, sigma, T, r, X, S, N) \{}
+\NormalTok{  q }\OtherTok{\textless{}{-}} \FunctionTok{q\_prob}\NormalTok{(}\AttributeTok{r=}\NormalTok{r, }\AttributeTok{delta\_t=}\NormalTok{T}\SpecialCharTok{/}\NormalTok{N, }\AttributeTok{sigma=}\NormalTok{sigma)}
+\NormalTok{  tree }\OtherTok{\textless{}{-}} \FunctionTok{stock\_tree\_HW\_American}\NormalTok{(}\AttributeTok{S=}\NormalTok{S, }\AttributeTok{sigma=}\NormalTok{sigma, }\AttributeTok{delta\_t=}\NormalTok{T}\SpecialCharTok{/}\NormalTok{N, }\AttributeTok{r=}\NormalTok{r,}\AttributeTok{N=}\NormalTok{N)}
+\NormalTok{  option }\OtherTok{\textless{}{-}} \FunctionTok{value\_binomial\_option\_HW\_American}\NormalTok{(tree, }\AttributeTok{sigma=}\NormalTok{sigma, }\AttributeTok{delta\_t=}\NormalTok{T}\SpecialCharTok{/}\NormalTok{N, }\AttributeTok{r=}\NormalTok{r, }\AttributeTok{X=}\NormalTok{X, }\AttributeTok{type=}\NormalTok{type)}
+  \FunctionTok{return}\NormalTok{(}\FunctionTok{list}\NormalTok{(}\AttributeTok{q=}\NormalTok{q, }\AttributeTok{stock=}\NormalTok{tree, }\AttributeTok{option=}\NormalTok{option, }\AttributeTok{price=}\NormalTok{option[}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{]))}
+\NormalTok{\}}
+
+\CommentTok{\#answer should be 19.11054}
+\CommentTok{\#binomial\_option\_HullWhite\_American(type=\textquotesingle{}call\textquotesingle{},sigma = .3,T=1,r=.08,X=95,S=100,N=2) }
+
+\DocumentationTok{\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}
+\DocumentationTok{\#\#\#\#\#\#\#\#\#\#\# LogNormal European Put and Call}
+\NormalTok{stock\_tree\_Log\_European}\OtherTok{=} \ControlFlowTok{function}\NormalTok{(S, sigma, delta\_t, r, N)\{}
+\NormalTok{  tree }\OtherTok{=} \FunctionTok{matrix}\NormalTok{(}\DecValTok{0}\NormalTok{, }\AttributeTok{nrow=}\NormalTok{N}\SpecialCharTok{+}\DecValTok{1}\NormalTok{, }\AttributeTok{ncol=}\NormalTok{N}\SpecialCharTok{+}\DecValTok{1}\NormalTok{)}
+  
+\NormalTok{  u }\OtherTok{=} \FunctionTok{exp}\NormalTok{(((r}\SpecialCharTok{{-}}\NormalTok{(sigma}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{)}\SpecialCharTok{*}\NormalTok{.}\DecValTok{5}\NormalTok{)}\SpecialCharTok{*}\NormalTok{delta\_t)}\SpecialCharTok{+}\NormalTok{(sigma}\SpecialCharTok{*}\NormalTok{(delta\_t)}\SpecialCharTok{\^{}}\NormalTok{(}\DecValTok{1}\SpecialCharTok{/}\DecValTok{2}\NormalTok{)))}
+\NormalTok{  d }\OtherTok{=} \FunctionTok{exp}\NormalTok{(((r}\SpecialCharTok{{-}}\NormalTok{(sigma}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{)}\SpecialCharTok{*}\NormalTok{.}\DecValTok{5}\NormalTok{)}\SpecialCharTok{*}\NormalTok{delta\_t)}\SpecialCharTok{{-}}\NormalTok{(sigma}\SpecialCharTok{*}\NormalTok{(delta\_t)}\SpecialCharTok{\^{}}\NormalTok{(}\DecValTok{1}\SpecialCharTok{/}\DecValTok{2}\NormalTok{)))}
+  
+  \ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\NormalTok{(N}\SpecialCharTok{+}\DecValTok{1}\NormalTok{)) \{}
+    \ControlFlowTok{for}\NormalTok{ (j }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\NormalTok{i) \{}
+\NormalTok{      tree[i,j] }\OtherTok{=}\NormalTok{ S }\SpecialCharTok{*}\NormalTok{ u}\SpecialCharTok{\^{}}\NormalTok{(j}\DecValTok{{-}1}\NormalTok{) }\SpecialCharTok{*}\NormalTok{ d}\SpecialCharTok{\^{}}\NormalTok{((i}\DecValTok{{-}1}\NormalTok{)}\SpecialCharTok{{-}}\NormalTok{(j}\DecValTok{{-}1}\NormalTok{))}
+\NormalTok{    \}}
+\NormalTok{  \}}
+  \FunctionTok{return}\NormalTok{(tree)}
+  
+\NormalTok{\}}
+
+\NormalTok{q\_prob }\OtherTok{=} \ControlFlowTok{function}\NormalTok{(r, delta\_t, sigma) \{}
+  
+\NormalTok{  u }\OtherTok{=} \FunctionTok{exp}\NormalTok{(((r}\SpecialCharTok{{-}}\NormalTok{(sigma}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{)}\SpecialCharTok{*}\NormalTok{.}\DecValTok{5}\NormalTok{)}\SpecialCharTok{*}\NormalTok{delta\_t)}\SpecialCharTok{+}\NormalTok{(sigma}\SpecialCharTok{*}\NormalTok{(delta\_t)}\SpecialCharTok{\^{}}\NormalTok{(}\DecValTok{1}\SpecialCharTok{/}\DecValTok{2}\NormalTok{)))}
+\NormalTok{  d }\OtherTok{=} \FunctionTok{exp}\NormalTok{(((r}\SpecialCharTok{{-}}\NormalTok{(sigma}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{)}\SpecialCharTok{*}\NormalTok{.}\DecValTok{5}\NormalTok{)}\SpecialCharTok{*}\NormalTok{delta\_t)}\SpecialCharTok{{-}}\NormalTok{(sigma}\SpecialCharTok{*}\NormalTok{(delta\_t)}\SpecialCharTok{\^{}}\NormalTok{(}\DecValTok{1}\SpecialCharTok{/}\DecValTok{2}\NormalTok{)))}
+  
+  \FunctionTok{return}\NormalTok{((}\FunctionTok{exp}\NormalTok{(r}\SpecialCharTok{*}\NormalTok{delta\_t) }\SpecialCharTok{{-}}\NormalTok{ d)}\SpecialCharTok{/}\NormalTok{(u}\SpecialCharTok{{-}}\NormalTok{d))}
+\NormalTok{\}}
+
+
+\NormalTok{value\_binomial\_option\_Log\_European }\OtherTok{=} \ControlFlowTok{function}\NormalTok{(tree, sigma, delta\_t, r, X, type)\{}
+  
+\NormalTok{  q }\OtherTok{=} \FunctionTok{q\_prob}\NormalTok{(r, delta\_t, sigma)}
+  
+\NormalTok{  option\_tree }\OtherTok{=} \FunctionTok{matrix}\NormalTok{(}\DecValTok{0}\NormalTok{, }\AttributeTok{nrow=}\FunctionTok{nrow}\NormalTok{(tree), }\AttributeTok{ncol=}\FunctionTok{ncol}\NormalTok{(tree))}
+  \ControlFlowTok{if}\NormalTok{(type }\SpecialCharTok{==} \StringTok{\textquotesingle{}put\textquotesingle{}}\NormalTok{) \{}
+\NormalTok{    option\_tree[}\FunctionTok{nrow}\NormalTok{(option\_tree),] }\OtherTok{=} \FunctionTok{pmax}\NormalTok{(X }\SpecialCharTok{{-}}\NormalTok{ tree[}\FunctionTok{nrow}\NormalTok{(tree),], }\DecValTok{0}\NormalTok{)}
+\NormalTok{  \} }\ControlFlowTok{else}\NormalTok{ \{}
+\NormalTok{    option\_tree[}\FunctionTok{nrow}\NormalTok{(option\_tree),] }\OtherTok{=} \FunctionTok{pmax}\NormalTok{(tree[}\FunctionTok{nrow}\NormalTok{(tree),] }\SpecialCharTok{{-}}\NormalTok{ X, }\DecValTok{0}\NormalTok{)}
+\NormalTok{  \}}
+  
+  \ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in}\NormalTok{ (}\FunctionTok{nrow}\NormalTok{(tree)}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{)}\SpecialCharTok{:}\DecValTok{1}\NormalTok{) \{}
+    \ControlFlowTok{for}\NormalTok{(j }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\NormalTok{i) \{}
+\NormalTok{      option\_tree[i, j] }\OtherTok{=}\NormalTok{ ((}\DecValTok{1}\SpecialCharTok{{-}}\NormalTok{q)}\SpecialCharTok{*}\NormalTok{option\_tree[i}\SpecialCharTok{+}\DecValTok{1}\NormalTok{,j] }\SpecialCharTok{+}\NormalTok{ q}\SpecialCharTok{*}\NormalTok{option\_tree[i}\SpecialCharTok{+}\DecValTok{1}\NormalTok{,j}\SpecialCharTok{+}\DecValTok{1}\NormalTok{])}\SpecialCharTok{/}\FunctionTok{exp}\NormalTok{(r}\SpecialCharTok{*}\NormalTok{delta\_t)}
+\NormalTok{    \}}
+\NormalTok{  \}}
+  \FunctionTok{return}\NormalTok{(option\_tree)}
+\NormalTok{\}}
+
+\NormalTok{binomial\_option\_Log\_Euro }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(type, sigma, T, r, X, S, N) \{}
+\NormalTok{  q }\OtherTok{\textless{}{-}} \FunctionTok{q\_prob}\NormalTok{(}\AttributeTok{r=}\NormalTok{r, }\AttributeTok{delta\_t=}\NormalTok{T}\SpecialCharTok{/}\NormalTok{N, }\AttributeTok{sigma=}\NormalTok{sigma)}
+\NormalTok{  tree }\OtherTok{\textless{}{-}} \FunctionTok{stock\_tree\_Log\_European}\NormalTok{(}\AttributeTok{S=}\NormalTok{S, }\AttributeTok{sigma=}\NormalTok{sigma, }\AttributeTok{delta\_t=}\NormalTok{T}\SpecialCharTok{/}\NormalTok{N,}\AttributeTok{r=}\NormalTok{r, }\AttributeTok{N=}\NormalTok{N)}
+\NormalTok{  option }\OtherTok{\textless{}{-}} \FunctionTok{value\_binomial\_option\_Log\_European}\NormalTok{(tree, }\AttributeTok{sigma=}\NormalTok{sigma, }\AttributeTok{delta\_t=}\NormalTok{T}\SpecialCharTok{/}\NormalTok{N, }\AttributeTok{r=}\NormalTok{r, }\AttributeTok{X=}\NormalTok{X, }\AttributeTok{type=}\NormalTok{type)}
+  \FunctionTok{return}\NormalTok{(}\FunctionTok{list}\NormalTok{(}\AttributeTok{q=}\NormalTok{q, }\AttributeTok{stock=}\NormalTok{tree, }\AttributeTok{option=}\NormalTok{option, }\AttributeTok{price=}\NormalTok{option[}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{]))}
+  
+\NormalTok{\}}
+
+
+
+\CommentTok{\#binomial\_option\_Log\_Euro(type=\textquotesingle{}call\textquotesingle{},sigma = .15,T=1,r=.1,X=100,S=110,N=5)}
+\end{Highlighting}
+\end{Shaded}
+
+
+\end{document}
